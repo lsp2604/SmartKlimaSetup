@@ -10,6 +10,6 @@ RUN if [ ${USER} != "root" ]; then \
         useradd -m -g ${USER} -u ${UID} ${USER}; \
     fi
 
-RUN chgrp -R ${USER}:${USER} /mosquitto
+RUN chown -R user:${USER} /mosquitto
 
 USER ${USER}
