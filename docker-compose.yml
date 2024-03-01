@@ -24,29 +24,14 @@ services:
 
 
   mosquitto:
-    # https://github.com/vvatelot/mosquitto-docker-compose/blob/main/config/mosquitto.conf
-    build:
-      context: .
-    volumes:
-      - type: bind
-        source: ./
-        target: /mosquitto/config/
-      - type: bind
-        source: ./log/
-        target: /mosquitto/log/
-      - type: volume
-        source: data
-        target: /mosquitto/data/
+    image: eclipse-mosquitto:latest
     ports:
-      - target: 1883
-        published: 1883
-        protocol: tcp
-        mode: host
-      - target: 9999
-        published: 9999
-        protocol: tcp
-        mode: host
+      - "1883:1883"
+      - "9999:9999"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
 
 volumes:
   influxdbv2:
-  data:
