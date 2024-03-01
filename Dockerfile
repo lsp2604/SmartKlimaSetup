@@ -4,12 +4,15 @@ ARG UID
 ARG GID
 ARG USER
 
-RUN if [ ${USER} != "root" ]; then \
-        apk add shadow && \
-        groupadd -f -g ${GID} ${USER} && \
-        useradd -m -g ${USER} -u ${UID} ${USER}; \
+RUN set -eux; \
+    if [ "${USER}" != "root" ]; then \
+        apk add --no-cache shadow; \
+        groupadd -f -g ${GID} ${USER} || true; \
+        useradd -m -g ${USER} -u ${UID} ${USER} || true; \
     fi
 
-RUN chown -R ${USER}:${USER} /mosquitto
+RUN if [ "${USER}" != "root" ]; then \
+        chown -R ${USER}:${USER} /mosquitto; \
+    fi
 
 USER ${USER}
