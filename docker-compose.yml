@@ -19,6 +19,9 @@ services:
       - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
     env_file:
       - influxv2.env
+    dns:
+      1.1.1.1
+
 
   mosquitto:
     # https://github.com/vvatelot/mosquitto-docker-compose/blob/main/config/mosquitto.conf
