@@ -29,7 +29,7 @@ services:
       - "1883:1883"
       - "4827:4827"
     volumes:
-      - ./mosquitto.conf:/mosquitto/config
+      - ./config:/mosquitto/config
       - ./mosquitto/data:/mosquitto/data
       - ./mosquitto/log:/mosquitto/log
 
