@@ -27,7 +27,7 @@ services:
     image: eclipse-mosquitto:latest
     ports:
       - "1883:1883"
-      - "9999:9999"
+      - "4827:4827"
     volumes:
       - ./mosquitto.conf:/mosquitto/config
       - ./mosquitto/data:/mosquitto/data
