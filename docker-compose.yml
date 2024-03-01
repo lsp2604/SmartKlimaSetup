@@ -32,6 +32,7 @@ services:
       - ./config:/mosquitto/config
       - ./mosquitto/data:/mosquitto/data
       - ./mosquitto/log:/mosquitto/log
-
+    dns:
+      1.1.1.1
 volumes:
   influxdbv2:
