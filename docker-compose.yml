@@ -20,5 +20,30 @@ services:
     env_file:
       - influxv2.env
 
+  mosquitto:
+    # https://github.com/vvatelot/mosquitto-docker-compose/blob/main/config/mosquitto.conf
+    build:
+      context: .
+    volumes:
+      - type: bind
+        source: ./
+        target: /mosquitto/config/
+      - type: bind
+        source: ./log/
+        target: /mosquitto/log/
+      - type: volume
+        source: data
+        target: /mosquitto/data/
+    ports:
+      - target: 1883
+        published: 1883
+        protocol: tcp
+        mode: host
+      - target: 9999
+        published: 9999
+        protocol: tcp
+        mode: host
+
 volumes:
   influxdbv2:
+  data:
