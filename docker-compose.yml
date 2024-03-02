@@ -26,8 +26,8 @@ services:
   mosquitto:
     image: eclipse-mosquitto:latest
     ports:
-      - "1883:1883"
-      - "4827:4827"
+      - "9001:9001"
+      - "9002:9002"
     volumes:
       - ./config:/mosquitto/config
       - ./mosquitto/data:/mosquitto/data
@@ -36,3 +36,6 @@ services:
       1.1.1.1
 volumes:
   influxdbv2:
+
+
+# NNSXS.5XUS5DPOO2ZRQNHWTKE27VHYVXU6LPCWASGO7BY.RCE5T4SF52CCZ6VCFHXILDHOSF2UUYHSL25V2BNFZRZLN4C7LKKA
