@@ -22,6 +22,17 @@ services:
     dns:
       1.1.1.1
 
+  telegraf_openWeather:
+    image: telegraf:latest
+    depends_on:
+      - influxdb
+    volumes:
+      # Mount for telegraf config
+      - ./telegraf2.conf:/etc/telegraf/telegraf.conf:ro
+    env_file:
+      - influxv2.env
+    dns:
+      1.1.1.1
 
   mosquitto:
     image: eclipse-mosquitto:latest
@@ -37,5 +48,3 @@ services:
 volumes:
   influxdbv2:
 
-
-# NNSXS.5XUS5DPOO2ZRQNHWTKE27VHYVXU6LPCWASGO7BY.RCE5T4SF52CCZ6VCFHXILDHOSF2UUYHSL25V2BNFZRZLN4C7LKKA
